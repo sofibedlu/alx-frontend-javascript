@@ -13,5 +13,6 @@ export default function handleProfileSignup() {
         }
       }
       console.log(values.join(' '));
-    });
+    })
+    .catch(() => console.log('Signup system offline'));
 }
