@@ -21,10 +21,43 @@ interface Directors extends Teacher {
     numberOfReports: number;
 }
 
+// Define the interface for the printTeacher function
 interface printTeacherFunction {
     (firstName: string, lastName: string): string;
 }
 
+// Define the printTeacher function using the PrintTeacherFunction interface
 export const printTeacher: printTeacherFunction = (firstName, lastName) => {
     return `${firstName.charAt(0)}. ${lastName}`;
+}
+
+
+// Define an interface for the constructor
+interface StudentConstructor {
+    new (firstName: string, lastName: string): StudentInstance;
+}
+
+// Define an interface for the instance
+interface StudentInstance {
+    workOnHomework(): string;
+    displayName(): string;
+}
+
+// Define the StudentClass
+class StudentClass implements StudentInstance {
+    private firstName: string;
+    private lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework() {
+        return 'Currently working';
+    }
+
+    displayName() {
+        return this.firstName;
+    }
 }
