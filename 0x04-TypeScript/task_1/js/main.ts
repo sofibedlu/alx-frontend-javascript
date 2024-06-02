@@ -15,3 +15,8 @@ interface Teacher {
     // This interface can have any other property with a string name
     [propName: string]: any;
 }
+
+interface Directors extends Teacher {
+    // numberOfReports is a required attribute for Directors
+    numberOfReports: number;
+}
