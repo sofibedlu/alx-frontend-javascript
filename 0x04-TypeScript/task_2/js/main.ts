@@ -44,3 +44,25 @@ export function createEmployee(salary: number | string): Director | Teacher {
         return new Director();
     }
 }
+
+/**
+ * This function checks if a given employee is a Director.
+ * 
+ * @param employee - The employee object to check. It can be of type Director or Teacher.
+ * @returns A boolean indicating whether the employee is a Director or not.
+ * 
+ * The function uses TypeScript's type guards. It tries to access a property that is unique to the Director type.
+ * If the property exists, it means the employee is a Director, so the function returns true.
+ * If the property does not exist, it means the employee is not a Director, so the function returns false.
+ */
+export function isDirector(employee: Director | Teacher): employee is Director {
+    return (employee as Director).workDirectorTasks !== undefined;
+}
+
+export function executeWork(employee: Director | Teacher) {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    } else {
+        return employee.workTeacherTasks();
+    }
+}
